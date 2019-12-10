@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Metadata for the Webpage -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Title</title><!-- Bootstrap CSS files-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><!-- Google Open Sans web font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700" rel="stylesheet"><!-- Font Awesome Web Icons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+
+  li {
+    padding: 1rem;
+  }
+
+  li:nth-child(odd) {
+    background: aliceblue;
+    margin-bottom: .75rem;
+  }
+
+  </style>
+
+</head>
+
+<body>
+  <ul id="list">
+  </ul>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script><!-- Bootstrap Library -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <script>
+
+    $(document).ready(function() {
+
+      $.getJSON('https://cors-anywhere.herokuapp.com/https://summeronline-dcnd.s3.amazonaws.com/prod/course_catalog.json', function(data) {
+
+        //clear the current content of the select
+        $('#list').empty();
+
+        $.each(data, function(i, item) {
+          $('#list').append('<li>' + item.meeting_times + '</li>');
+        });
+
+      });
+    });
+
+  </script>
+
+
+</body>
+
+</html>
